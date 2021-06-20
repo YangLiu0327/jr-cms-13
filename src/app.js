@@ -13,8 +13,11 @@ const morganLog =
   process.env.NODE_ENV === 'production' ? morgan('common') : morgan('dev');
 app.use(morganLog);
 app.use(cors());
-
 app.use(express.json());
+
+app.get('/', (req, res) => {
+  res.send('Welcome to JR CMS');
+});
 app.use('/api', router);
 app.use(errorHandler);
 
